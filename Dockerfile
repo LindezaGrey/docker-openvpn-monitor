@@ -1,11 +1,11 @@
 FROM python:3-alpine
 
 RUN apk add --no-cache --virtual .build-dependencies gcc linux-headers geoip-dev musl-dev openssl tar \
-  && wget -O /usr/bin/confd https://github.com/kelseyhightower/confd/releases/download/v0.12.0-alpha3/confd-0.12.0-alpha3-linux-amd64 \
+  && wget -O /usr/bin/confd https://github.com/kelseyhightower/confd/releases/download/v0.14.0/confd-0.14.0-linux-amd64 \
   && chmod a+x /usr/bin/confd \
   && pip install gunicorn
 
-ENV VERSION=c70d40167a41f63f396545bc87bf6e2b7dbd496e
+ENV VERSION=14e82281bec8ed0e67341317324bac719720da65
 
 RUN mkdir /openvpn-monitor \
   && wget -O - https://github.com/furlongm/openvpn-monitor/archive/${VERSION}.tar.gz | tar -C /openvpn-monitor --strip-components=1 -zxvf - \
