@@ -1,4 +1,4 @@
-[OpenVPN-Monitor]
+[openvpn-monitor]
 {{- range $i := ls "/openvpnmonitor/default" }}
 {{- if eq $i "datetimeformat" }}
 datetime_format={{ replace (getv (printf "/openvpnmonitor/default/%s" $i)) "%%" "%" -1 -}}
