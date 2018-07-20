@@ -29,7 +29,7 @@ By default, GeoIP is automatically available (no additional download step is req
 So a minimal and accessible, yet non-functional, version of OpenVPN Monitor can be reduced to:
 
 ```
-docker run -p 80:80 --rm ruimarinho/openvpn-monitor
+docker run -p 8090:8090 --rm ruimarinho/openvpn-monitor
 ```
 
 Let's add some configuration, including changing the page name, adding a logo, some geolocation features and two sites - one that connects to a running TCP OpenVPN server and another one to an UDP server.
@@ -52,10 +52,10 @@ docker run --name openvpn-monitor \
   -e OPENVPNMONITOR_SITES_1_HOST=openvpn-udp \
   -e OPENVPNMONITOR_SITES_1_NAME=TCP \
   -e OPENVPNMONITOR_SITES_1_PORT=5555 \
-  -p 80:80 ruimarinho/openvpn-monitor
+  -p 8090:8090 ruimarinho/openvpn-monitor
 ```
 
-Now OpenVPN Monitor should be accessible via http://127.0.0.1:80.
+Now OpenVPN Monitor should be accessible via http://127.0.0.1:8090.
 
 *Note that for the `logo.jpg` to be readable, you need to bind-mount it or pass an URL instead. Also, the datetime format needs to be escaped as shown above (suing two %).*
 
