@@ -9,7 +9,7 @@ ENV VERSION=516f35b36cf209fc429e5e437f4561b47880e51c
 
 RUN mkdir /openvpn-monitor \
   && wget -O - https://github.com/furlongm/openvpn-monitor/archive/${VERSION}.tar.gz | tar -C /openvpn-monitor --strip-components=1 -zxvf - \
-  && pip install /openvpn-monitor 
+  && cp /openvpn-monitor/openvpn-monitor.conf.example /openvpn-monitor/openvpn-monitor.conf && pip install /openvpn-monitor 
 
 RUN apk del .build-dependencies
 
