@@ -1,9 +1,6 @@
-# ruimarinho/openvpn-monitor
+# LindezaGrey/openvpn-monitor
 
 Run the [web-based OpenVPN Monitor](http://openvpn-monitor.openbytes.ie) in Docker.
-
-[![build status][travis-image]][travis-url]
-[![ruimarinho/openvpn-monitor][docker-stars-image]][docker-hub-url]  [![ruimarinho/openvpn-monitor][docker-pulls-image]][docker-hub-url]  
 
 ## What is OpenVPN Monitor?
 
@@ -29,7 +26,7 @@ By default, GeoIP is automatically available (no additional download step is req
 So a minimal and accessible, yet non-functional, version of OpenVPN Monitor can be reduced to:
 
 ```
-docker run -p 8090:8090 --rm ruimarinho/openvpn-monitor
+docker run -p 80:80 -rm openvpn-monitor
 ```
 
 Let's add some configuration, including changing the page name, adding a logo, some geolocation features and two sites - one that connects to a running TCP OpenVPN server and another one to an UDP server.
@@ -48,14 +45,11 @@ docker run --name openvpn-monitor \
   -e OPENVPNMONITOR_SITES_0_HOST=openvpn-udp \
   -e OPENVPNMONITOR_SITES_0_NAME=UDP \
   -e OPENVPNMONITOR_SITES_0_PORT=5555 \
-  -e OPENVPNMONITOR_SITES_1_ALIAS=TCP \
-  -e OPENVPNMONITOR_SITES_1_HOST=openvpn-udp \
-  -e OPENVPNMONITOR_SITES_1_NAME=TCP \
-  -e OPENVPNMONITOR_SITES_1_PORT=5555 \
-  -p 8090:8090 ruimarinho/openvpn-monitor
+
+  -p 80:80 openvpn-monitor
 ```
 
-Now OpenVPN Monitor should be accessible via http://127.0.0.1:8090.
+Now OpenVPN Monitor should be accessible via http://127.0.0.1:80.
 
 *Note that for the `logo.jpg` to be readable, you need to bind-mount it or pass an URL instead. Also, the datetime format needs to be escaped as shown above (suing two %).*
 
@@ -66,9 +60,3 @@ This image is officially supported on Docker version 1.12, with support for olde
 ## License
 
 MIT
-
-[docker-hub-url]: https://hub.docker.com/r/ruimarinho/openvpn-monitor
-[docker-pulls-image]: https://img.shields.io/docker/pulls/ruimarinho/openvpn-monitor.svg?style=flat-square
-[docker-stars-image]: https://img.shields.io/docker/stars/ruimarinho/openvpn-monitor.svg?style=flat-square
-[travis-image]: https://img.shields.io/travis/ruimarinho/docker-openvpn-monitor.svg?style=flat-square
-[travis-url]: https://travis-ci.org/ruimarinho/docker-openvpn-monitor
