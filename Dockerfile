@@ -15,9 +15,10 @@ RUN apk del .build-dependencies
 
 RUN mkdir -p /usr/share/GeoIP/ \
   && cd /usr/share/GeoIP/ \
-  && wget http://geolite.maxmind.com/download/geoip/database/GeoLiteCity.dat.gz \
-  && gunzip GeoLiteCity.dat.gz \
-&& mv GeoLiteCity.dat GeoIPCity.dat
+  && wget https://geolite.maxmind.com/download/geoip/database/GeoLite2-City.tar.gz \
+  && tar zxvf GeoLite2-City.tar.gz \
+  && mv GeoLite2-City_*/GeoLite2-City.mmdb . \
+&& rm -r GeoLite2-City_*
 
 RUN apk add --no-cache geoip
 
